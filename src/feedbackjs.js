@@ -22,7 +22,6 @@
 			shadowBlur:				10,
 			lineJoin:				'bevel',
 			lineWidth:				3,
-			html2canvasURL:			'html2canvas.js',
 			feedbackButton: 		'.feedback-btn',
 			showDescriptionModal: 	true,
 			isDraggable: 			true,
@@ -40,8 +39,7 @@
 			initialBox:				false
     }, options);
 		var supportedBrowser = !!window.HTMLCanvasElement;
-		var isFeedbackButtonNative = settings.feedbackButton == '.feedback-btn';
-		var _html2canvas = false;
+		var isFeedbackButtonNative = settings.feedbackButton === '.feedback-btn';
 		if (supportedBrowser) {
 			if(isFeedbackButtonNative) {
 				$('body').append('<button class="feedback-btn feedback-btn-gray">' + settings.initButtonText + '</button>');
@@ -50,11 +48,7 @@
 				if(isFeedbackButtonNative) {
 					$(this).hide();
 				}
-				if (!_html2canvas) {
-					$.getScript(settings.html2canvasURL, function() {
-						_html2canvas = true;
-					});
-				}
+
 				var canDraw = false,
 					img = '',
 					h 	= $(document).height(),
@@ -104,16 +98,12 @@
 							_bottom = drag_h - e.pageY;
 							_right 	= drag_w - e.pageX;
 
-							if (_left < 0) _left = 0;
-							if (_top < 0) _top = 0;
-							if (_right > $(window).width())
-								_left = $(window).width() - drag_w;
-							if (_left > $(window).width() - drag_w)
-								_left = $(window).width() - drag_w;
-							if (_bottom > $(document).height())
-								_top = $(document).height() - drag_h;
-							if (_top > $(document).height() - drag_h)
-								_top = $(document).height() - drag_h;
+							if (_left < 0){ _left = 0; }
+							if (_top < 0){ _top = 0; }
+							if (_right > $(window).width()){ _left = $(window).width() - drag_w; }
+							if (_left > $(window).width() - drag_w){_left = $(window).width() - drag_w;}
+							if (_bottom > $(document).height()) {_top = $(document).height() - drag_h;}
+							if (_top > $(document).height() - drag_h){_top = $(document).height() - drag_h;}
 
 							$('.feedback-draggable').offset({
 								top:	_top,

@@ -1,0 +1,15 @@
+{
+  "name": "feedback",
+  "version": "2.0.0",
+  "main": [
+    "dist/jquery.feedback.js",
+    "dist/jquery.feedback.css"
+  ],
+  "dependencies": {
+    "html2canvas": "~0.4.1",
+    "jquery":"~2.1.4"
+  },
+  "devDependencies": {
+    "qunit": "~1.12.0"
+  }
+}
