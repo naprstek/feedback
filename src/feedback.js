@@ -34,6 +34,7 @@
 				submitError:	'<div id="feedback-submit-error"><div class="feedback-logo">Feedback</div><p>Sadly an error occured while sending your feedback. Please try again.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>'
 			},
 			onClose: 				function() {},
+			onSubmit: 				function() {},
 			screenshotStroke:		true,
 			highlightElement:		true,
 			initialBox:				false
@@ -502,19 +503,9 @@
 
 						post.img = img;
 						post.note = $('#feedback-note').val();
-                        var data = {feedback: JSON.stringify(post)};
-						$.ajax({
-							url: settings.ajaxURL,
-							dataType: 'json',
-							type: 'POST',
-							data: data,
-							success: function() {
-								$('#feedback-module').append(settings.tpl.submitSuccess);
-							},
-							error: function(){
-								$('#feedback-module').append(settings.tpl.submitError);
-							}
-						});
+
+            settings.onSubmit(JSON.stringify(post))
+            close();
 					}
 					else {
 						$('#feedback-overview-error').show();

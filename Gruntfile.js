@@ -30,6 +30,10 @@ module.exports = function (grunt) {
       css: {
         src: ['src/<%= pkg.name %>.css'],
         dest: 'dist/jquery.<%= pkg.name %>.css'
+      },
+      images: {
+        src: ['src/icons.png'],
+        dest: 'dist/icons.png'
       }
     },
     uglify: {
