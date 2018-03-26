@@ -1,5 +1,5 @@
-/*! feedback - v2.0.0 - 2015-08-11
-* Copyright (c) 2015 wizzi; Licensed MIT */
+/*! feedback - v2.0.0 - 2018-03-26
+* Copyright (c) 2018 wizzi; Licensed MIT */
 // feedback.js
 // 2013, Kázmér Rapavi, https://github.com/ivoviz/feedback
 // Licensed under the MIT license.
